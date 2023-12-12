@@ -3,7 +3,7 @@ import Coach from './Model/Coach.js';
 import Validator from './Validator.js';
 import InputView from './View/InputView.js';
 import OutputView from './View/OutputView.js';
-import { COMMA, MAX_SAME_CATEGORY_SELECTIONS_PER_WEEK } from './constants.js';
+import { COMMA, MAX_RANDOM_NUMBER, MAX_RECOMMENDATION_SIZE, MAX_SAME_CATEGORY_SELECTIONS_PER_WEEK, MIN_RANDOM_NUMBER } from './constants.js';
 
 class App {
   #coaches = [];
@@ -56,8 +56,8 @@ class App {
   }
 
   generateCategories() {
-    while (this.#categories.length < 5) {
-      const category = Random.pickNumberInRange(0, 4);
+    while (this.#categories.length < MAX_RECOMMENDATION_SIZE) {
+      const category = Random.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
       if (!(
         this.#categories.filter(value => value === category).length >=

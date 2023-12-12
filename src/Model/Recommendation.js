@@ -1,5 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
-import { COMMA, EMPTY_CHARACTER, MENU_CARD, WHITESPACE } from '../constants.js';
+import { COMMA, EMPTY_CHARACTER, FIRST_ARRAY_INDEX, INCREMENT, MENU_CARD, WHITESPACE } from '../constants.js';
 
 export default class Recommendation {
   #dislikedMenus;
@@ -16,8 +16,8 @@ export default class Recommendation {
       .replaceAll(WHITESPACE, EMPTY_CHARACTER)
       .split(COMMA);
 
-    while (menuRecommendationSet.size < this.#menuRecommendation.length + 1) {
-      const newIndex = Random.shuffle(Array.from(menuCardInArray.keys()))[0];
+    while (menuRecommendationSet.size < this.#menuRecommendation.length + INCREMENT) {
+      const newIndex = Random.shuffle(Array.from(menuCardInArray.keys()))[FIRST_ARRAY_INDEX];
       const menu = menuCardInArray[newIndex];
 
       if (!this.#menuRecommendation.includes(menu) && !this.#dislikedMenus.includes(menu)) {
