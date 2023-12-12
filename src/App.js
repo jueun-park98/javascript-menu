@@ -8,6 +8,7 @@ import { COMMA, MAX_SAME_CATEGORY_SELECTIONS_PER_WEEK } from './constants.js';
 class App {
   #coaches = [];
   #categories = [];
+  #result = {};
 
   async play() {
     OutputView.printStartMessage();
@@ -15,6 +16,9 @@ class App {
     await this.initializeDislikedMenus();
     this.generateCategories();
     this.generateAllMenuRecommendations();
+    this.saveResult();
+    OutputView.printResult(this.#categories, this.#result);
+    OutputView.printEndMessage();
   }
 
   async initializeCoachs() {
@@ -56,7 +60,7 @@ class App {
       const category = Random.pickNumberInRange(0, 4);
 
       if (!(
-        this.#categories.filter(value => value === category).length >
+        this.#categories.filter(value => value === category).length >=
         MAX_SAME_CATEGORY_SELECTIONS_PER_WEEK
       )) {
         this.#categories.push(category);
@@ -69,6 +73,12 @@ class App {
       this.#coaches.forEach(coach => {
         coach.generateOneMenuRecommendation(category);
       });
+    });
+  }
+
+  saveResult() {
+    this.#coaches.forEach(coach => {
+      this.#result[coach.getName()] = coach.getMenuRecommendation();
     });
   }
 }

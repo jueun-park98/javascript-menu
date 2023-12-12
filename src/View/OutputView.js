@@ -15,8 +15,9 @@ const OutputView = {
     this.print(END_MESSAGE);
   },
 
-  printResult(result) {
+  printResult(categories, result) {
     this.print(RESULT_MESSAGE);
+    this.print(StringUtils.parseCategoriesInString(categories));
     this.print(StringUtils.parseResultInString(result));
   }
 }

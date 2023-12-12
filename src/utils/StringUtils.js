@@ -1,4 +1,4 @@
-import { COMMA, EMPTY_CHARACTER, EMPTY_LENGTH, MAX_MENUS_LENGTH, MAX_NAMES_LENGTH, MAX_NAME_LENGTH, MAX_SAME_CATEGORY_SELECTIONS_PER_WEEK, MENU_CARD, MIN_NAMES_LENGTH, MIN_NAME_LENGTH, WHITESPACE } from '../constants.js';
+import { ASIAN, CHINESE, COMMA, EMPTY_CHARACTER, EMPTY_LENGTH, JAPANESE, KOREAN, MAX_MENUS_LENGTH, MAX_NAMES_LENGTH, MAX_NAME_LENGTH, MAX_SAME_CATEGORY_SELECTIONS_PER_WEEK, MENU_CARD, MIN_NAMES_LENGTH, MIN_NAME_LENGTH, WESTERN, WHITESPACE } from '../constants.js';
 
 const StringUtils = {
   isEmpty(string) {
@@ -68,6 +68,19 @@ const StringUtils = {
     });
 
     return resultString;
+  },
+
+  parseCategoriesInString(categories) {
+    const categoryMap = {
+      0: JAPANESE,
+      1: KOREAN,
+      2: CHINESE,
+      3: ASIAN,
+      4: WESTERN
+    };
+    const parsedCategories = categories.map(categoryNumber => categoryMap[categoryNumber]);
+
+    return `[ 카테고리 | ${parsedCategories.join(' | ')} ]`;
   }
 }
 
