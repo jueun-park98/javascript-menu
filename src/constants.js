@@ -7,6 +7,15 @@ export const MENU = Object.freeze({
 	western: '라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니',
 });
 
+export const COMMA = ',';
+
+export const EMPTY_LENGTH = 0;
+export const MIN_NAME_LENGTH = 2;
+export const MAX_NAME_LENGTH = 4;
+export const MIN_NAMES_LENGTH = 2;
+export const MAX_NAMES_LENGTH = 5;
+export const MAX_MENUS_LENGTH = 2;
+
 export const START_MESSAGE = '점심 메뉴 추천을 시작합니다.';
 export const END_MESSAGE = '추천을 완료했습니다.';
 export const RESULT_MESSAGE = `메뉴 추천 결과입니다.
@@ -15,3 +24,6 @@ export const RESULT_MESSAGE = `메뉴 추천 결과입니다.
 
 export const COACH_NAMES_INPUT_MESSAGE = '메뉴 추천을 받을 코치의 이름을 입력 해 주세요.';
 export const DISLIKED_MENUS_INPUT_MESSAGE = '(이)가 못 먹는 메뉴를 입력해 주세요.';
+
+export const COACH_ERROR_MESSAGE = '[ERROR] 유효하지 않은 형식의 이름입니다. 코치 이름을 다시 입력 해 주세요.';
+export const MENU_ERROR_MESSAGE = '[ERROR] 유효하지 않은 형식의 이름입니다. 메뉴 이름을 다시 입력 해 주세요.';
