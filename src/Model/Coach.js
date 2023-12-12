@@ -1,6 +1,9 @@
+import Recommendation from './Recommendation.js';
+
 export default class Coach {
   #name;
   #dislikedMenus = [];
+  #recommendation;
 
   constructor(name) {
     this.#name = name;
@@ -16,5 +19,17 @@ export default class Coach {
 
   getDislikedMenus() {
     return this.#dislikedMenus;
+  }
+
+  getMenuRecommendation() {
+    return this.#recommendation.getMenuRecommendation();
+  }
+
+  initializeRecommendation() {
+    this.#recommendation = new Recommendation(this.#dislikedMenus);
+  }
+
+  generateOneMenuRecommendation(categoryNumber) {
+    this.#recommendation.generateMenuRecommendation(categoryNumber);
   }
 }

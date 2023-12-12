@@ -17,6 +17,8 @@ export const MAX_NAME_LENGTH = 4;
 export const MIN_NAMES_LENGTH = 2;
 export const MAX_NAMES_LENGTH = 5;
 export const MAX_MENUS_LENGTH = 2;
+export const MAX_RECOMMENDATION_SIZE = 5;
+export const MAX_SAME_CATEGORY_SELECTIONS_PER_WEEK = 2;
 
 export const START_MESSAGE = '점심 메뉴 추천을 시작합니다.';
 export const END_MESSAGE = '추천을 완료했습니다.';
