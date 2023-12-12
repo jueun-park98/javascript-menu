@@ -5,7 +5,6 @@ const Validator = {
   validateCoachNames(input) {
     const conditions = [
       !StringUtils.isEmpty(input),
-      !StringUtils.isNumeric(input),
       !StringUtils.hasSpecialCharacters(input),
       StringUtils.hasNamesInLengthRange(input),
       StringUtils.hasNameCountInRange(input)
@@ -18,10 +17,9 @@ const Validator = {
 
   validateDislikedMenus(input) {
     const conditions = [
-      !StringUtils.isEmpty(input),
-      !StringUtils.isNumeric(input),
       !StringUtils.hasSpecialCharacters(input),
-      StringUtils.hasMenuCountInRange(input)
+      StringUtils.hasMenuCountInRange(input),
+      StringUtils.hasMenusInMenuCard(input)
     ];
 
     if (conditions.some(condition => !condition)) {

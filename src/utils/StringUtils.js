@@ -1,4 +1,4 @@
-import { COMMA, EMPTY_LENGTH, MAX_MENUS_LENGTH, MAX_NAMES_LENGTH, MAX_NAME_LENGTH, MIN_NAMES_LENGTH, MIN_NAME_LENGTH } from '../constants.js';
+import { COMMA, EMPTY_CHARACTER, EMPTY_LENGTH, MAX_MENUS_LENGTH, MAX_NAMES_LENGTH, MAX_NAME_LENGTH, MENU_CARD, MIN_NAMES_LENGTH, MIN_NAME_LENGTH, WHITESPACE } from '../constants.js';
 
 const StringUtils = {
   isEmpty(string) {
@@ -39,6 +39,25 @@ const StringUtils = {
     const menus = string.split(COMMA);
 
     return !(menus.length > MAX_MENUS_LENGTH);
+  },
+
+  hasMenusInMenuCard(string) {
+    const menus = string.split(COMMA);
+    const conditions = menus.map(menu => this.isInMenuCard(menu));
+
+    return !conditions.some(condition => !condition);
+  },
+
+  isInMenuCard(menuString) {
+    const menuCardArray = Object.values(MENU_CARD).map(
+      category => category.replaceAll(WHITESPACE, EMPTY_CHARACTER).split(COMMA)
+    ).flat();
+
+    if (this.isEmpty(menuString)) {
+      return true;
+    }
+
+    return menuCardArray.some(menuInCard => menuInCard === menuString);
   },
 
   parseResultInString(resultObject) {
