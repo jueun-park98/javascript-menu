@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { COACH_NAMES_INPUT_MESSAGE, DISLIKED_MENUS_INPUT_MESSAGE } from '../constants';
+import { COACH_NAMES_INPUT_MESSAGE, DISLIKED_MENUS_INPUT_MESSAGE } from '../constants.js';
 
 const InputView = {
   async readCoachNames() {

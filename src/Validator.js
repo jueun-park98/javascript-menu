@@ -1,5 +1,5 @@
-import { COACH_ERROR_MESSAGE, MENU_ERROR_MESSAGE } from './constants';
-import StringUtils from './utils/StringUtils';
+import { COACH_ERROR_MESSAGE, MENU_ERROR_MESSAGE } from './constants.js';
+import StringUtils from './utils/StringUtils.js';
 
 const Validator = {
   validateCoachNames(input) {
@@ -29,3 +29,5 @@ const Validator = {
     }
   }
 }
+
+export default Validator;

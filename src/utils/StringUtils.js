@@ -1,4 +1,4 @@
-import { COMMA, EMPTY_LENGTH, MAX_MENUS_LENGTH, MAX_NAMES_LENGTH, MAX_NAME_LENGTH, MIN_NAMES_LENGTH, MIN_NAME_LENGTH } from '../constants';
+import { COMMA, EMPTY_LENGTH, MAX_MENUS_LENGTH, MAX_NAMES_LENGTH, MAX_NAME_LENGTH, MIN_NAMES_LENGTH, MIN_NAME_LENGTH } from '../constants.js';
 
 const StringUtils = {
   isEmpty(string) {
@@ -10,7 +10,7 @@ const StringUtils = {
   },
 
   hasSpecialCharacters(string) {
-    let regex = /[^\w\s,]/;
+    let regex = /[^\w\s,ㄱ-ㅎㅏ-ㅣ가-힣]/;
 
     return regex.test(string);
   },
@@ -18,10 +18,10 @@ const StringUtils = {
   hasNamesInLengthRange(string) {
     const names = string.split(COMMA);
     const conditions = names.map(name =>
-      !name.length < MIN_NAME_LENGTH &&
-      !name.length > MAX_NAME_LENGTH
+      !(name.length < MIN_NAME_LENGTH) &&
+      !(name.length > MAX_NAME_LENGTH)
       );
-
+    
     if (conditions.some(condition => !condition)) {
       return false;
     }
@@ -32,13 +32,13 @@ const StringUtils = {
   hasNameCountInRange(string) {
     const names = string.split(COMMA);
 
-    return !names.length < MIN_NAMES_LENGTH && !names.length > MAX_NAMES_LENGTH;
+    return !(names.length < MIN_NAMES_LENGTH) && !(names.length > MAX_NAMES_LENGTH);
   },
 
   hasMenuCountInRange(string) {
     const menus = string.split(COMMA);
 
-    return !menus.length > MAX_MENUS_LENGTH;
+    return !(menus.length > MAX_MENUS_LENGTH);
   },
 
   parseResultInString(resultObject) {
