@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { START_MESSAGE } from '../constants';
+import { END_MESSAGE, START_MESSAGE } from '../constants';
 
 const OutputView = {
   print(message) {
@@ -8,7 +8,11 @@ const OutputView = {
 
   printStartMessage() {
     this.print(START_MESSAGE);
-  }
+  },
+
+  printEndMessage() {
+    this.print(END_MESSAGE);
+  },
 }
 
 export default OutputView;
